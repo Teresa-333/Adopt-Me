@@ -32,7 +32,7 @@ const SearchParams = () => {
             value={animal}
             onChange={(e)=> {
               updateAnimal(e.target.value);
-              updateAnimal("");
+              setBreed("");
             }}>
             <option />
             {ANIMALS.map((animal) => (
