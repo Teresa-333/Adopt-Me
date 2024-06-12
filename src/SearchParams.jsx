@@ -7,12 +7,12 @@ import fetchSearch from "./fetchSearch";
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
 const SearchParams = () => {
-  const [ requestParams, setRequestParams ] = useState({
+  const [requestParams, setRequestParams] = useState({
     location: "",
     animal: "",
     breed: "",
   });
-  const [ animal, updateAnimal ] = useState("");
+  const [animal, updateAnimal] = useState("");
   const [breeds] = useBreedList(animal);
 
   const results = useQuery(["search", requestParams], fetchSearch);
@@ -20,9 +20,8 @@ const SearchParams = () => {
 
   return (
     <div className="search-params">
-
-      <form 
-        onSubmit={(e) =>{
+      <form
+        onSubmit={(e) => {
           e.preventDefault();
           const formData = new FormData(e.target);
           const obj = {
@@ -31,9 +30,9 @@ const SearchParams = () => {
             location: formData.get("location") ?? "",
           };
           setRequestParams(obj);
-        }}>
-
-<label htmlFor="location">
+        }}
+      >
+        <label htmlFor="location">
           Location
           <input id="location" name="location" placeholder="Location" />
         </label>
@@ -72,7 +71,6 @@ const SearchParams = () => {
         </label>
 
         <button>Sumit</button>
-
       </form>
       <Results pets={pets} />
     </div>
